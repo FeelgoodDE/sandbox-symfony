@@ -1,0 +1,27 @@
+[submodule "vagrantee/puppet/modules/php"]
+	path = vagrantee/puppet/modules/php
+	url = https://github.com/example42/puppet-php.git
+[submodule "vagrantee/puppet/modules/apache"]
+	path = vagrantee/puppet/modules/apache
+	url = https://github.com/example42/puppet-apache.git
+[submodule "vagrantee/puppet/modules/puppi"]
+	path = vagrantee/puppet/modules/puppi
+	url = https://github.com/example42/puppi.git
+[submodule "vagrantee/puppet/modules/mysql"]
+	path = vagrantee/puppet/modules/mysql
+	url = https://github.com/example42/puppet-mysql
+[submodule "vagrantee/puppet/modules/apt"]
+	path = vagrantee/puppet/modules/apt
+	url = https://github.com/puppetlabs/puppetlabs-apt.git
+[submodule "vagrantee/puppet/modules/stdlib"]
+	path = vagrantee/puppet/modules/stdlib
+	url = https://github.com/puppetlabs/puppetlabs-stdlib.git
+[submodule "vagrantee/puppet/modules/composer"]
+	path = vagrantee/puppet/modules/composer
+	url = https://github.com/vagrantee/puppet-composer.git
+[submodule "vagrantee/puppet/modules/git"]
+	path = vagrantee/puppet/modules/git
+	url = https://github.com/vagrantee/puppet-git.git
+[submodule "vagrantee/puppet/modules/symfony"]
+	path = vagrantee/puppet/modules/symfony
+	url = https://github.com/vagrantee/puppet-symfony.git
