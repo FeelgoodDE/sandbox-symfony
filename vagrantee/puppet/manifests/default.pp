@@ -96,7 +96,6 @@ class { 'symfony':
   db_name  => $mysql_db,
   db_user  => $mysql_user,
   db_pass  => $mysql_pass,
-  template => 'custom/parameters.yml.erb'
 }
 
 /* optimize symfony AppKernel */

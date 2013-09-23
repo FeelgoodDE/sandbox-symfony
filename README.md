@@ -35,7 +35,7 @@ This sandbox by default runs a patch to the AppKernel class, adding 2 methods th
 **only for *dev* and *test* environments**. This makes an impressive difference on the application performance as described on this
 excelent post from <a href="https://twitter.com/beberlei">@beberlei</a>: <a href="http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html">http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html</a>
 
-##Customizing
+##Customizing Puppet
 To customize your sandbox, you can edit the custom module or modify the default manifest.
 
 ###Custom Module

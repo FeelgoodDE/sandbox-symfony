@@ -14,11 +14,11 @@ Vagrant.configure("2") do |config|
 
   config.vm.provider :virtualbox do |v|
     v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    v.customize ["modifyvm", :id, "--memory", 4096]
+    v.customize ["modifyvm", :id, "--memory", 1024]
     v.customize ["modifyvm", :id, "--name", "vagrantee-symfony"]
   end
 
-    config.vm.synced_folder "./application/cobase/", "/vagrant", id: "vagrant-root", :nfs => true
+    config.vm.synced_folder "./application/myapp/", "/vagrant", id: "vagrant-root", :nfs => true
 
     config.vm.provision :puppet do |puppet|
         puppet.manifests_path = "vagrantee/puppet/manifests"
