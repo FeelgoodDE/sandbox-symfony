@@ -37,8 +37,15 @@ if [ "$run_app" != "0" ]; then
         if [ -d "./application/$run_app" ]; then
             echo "Setting up Vagrantfile for $run_app application..."
             /bin/sed -i 's/application\/[a-zA-Z0-9]*/application\/'"$run_app"'/' ./Vagrantfile
-            echo "Vagrantfile is ready. Reloading Vagrant..."
-            /usr/bin/vagrant reload
+            echo "Vagrantfile is ready. Running Vagrant..."
+            command="up"
+            vagrant_status=`/usr/bin/vagrant status | grep -c "not created"`
+            if [ "$vagrant_status" = "0" ]; then
+                command="reload"
+            fi
+
+            /usr/bin/vagrant "$command"
+
             exit 1
         else
             echo "The application $run_app was not found in the application dir. Did you forget to add it with -a?"

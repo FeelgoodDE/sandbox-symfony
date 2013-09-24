@@ -10,12 +10,11 @@ excelent post from <a href="https://twitter.com/beberlei">@beberlei</a>: <a href
 
 
 ##Usage
-You can have several Symfony applications using the same sandbox, but only one can be active each time.
-For switching between the applications, you can either use the vagrantee.sh script or manually edit the Vagrantfile to point to the correct folder.
+You can have several Symfony applications using the same sandbox, but only one can be active each time. There's a basic shell script to help with adding and changing the active app.
 
 Usage Instructions below:
 
-*Step 1: Clone this repository and initialize the puppet modules *
+####Step 1: Clone this repository and initialize the puppet modules
 
 ``git clone https://github.com/vagrantee/sandbox-symfony.git``
 
@@ -23,25 +22,19 @@ Usage Instructions below:
 
 ``git submodule update``
 
-*Step 2: Add the Symfony app(s)*
+####Step 2: Add the Symfony app(s)
 
 ``./vagrantee.sh -a https://github.com/myVendor/myApplication.git``
 
-Or do it manually:
+Or do it manually by cloning the application inside the "application" folder.
 
-``cd application/``
-
-``git clone https://github.com/myVendor/myApplication.git``
-
-*Step 3: Run the application*
+####Step 3: Run the application
 
 ``./vagrantee.sh -r myApplication``
 
-Or do it manually by editing the Vagrantfile. The *config.vm.synced_folder* must point to your app folder, like this:
+Or do it manually by editing the Vagrantfile and running vagrant (up or reload). The *config.vm.synced_folder* must point to your app folder, like this:
 
 ``config.vm.synced_folder "./application/myApplication/", "/vagrant", id: "vagrant-root", :nfs => true``
-
-4. Run ``vagrant up``
 
 After provisioning, your app shall be running at http://192.168.33.101 .
 PhpMyAdmin will be running at http://192.168.33.101:8000 .
