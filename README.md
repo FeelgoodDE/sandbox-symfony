@@ -3,37 +3,48 @@ sandbox-symfony
 
 A Symfony-optimized Sandbox on Vagrant
 
+##Performance
+This sandbox by default runs a patch to the AppKernel class, adding 2 methods that will change the CACHE and LOG folders
+**only for *dev* and *test* environments**. This makes an impressive difference on the application performance as described on this
+excelent post from <a href="https://twitter.com/beberlei">@beberlei</a>: <a href="http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html">http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html</a>
+
 
 ##Usage
 You can have several Symfony applications using the same sandbox, but only one can be active each time.
-For switching between the applications, for now, you have to edit a file.
+For switching between the applications, you can either use the vagrantee.sh script or manually edit the Vagrantfile to point to the correct folder.
+
 Usage Instructions below:
 
-1. Clone this repository in your local environment. CD to the folder and Initialize the puppet modules:
+*Step 1: Clone this repository and initialize the puppet modules *
+
+``git clone https://github.com/vagrantee/sandbox-symfony.git``
 
 ``git submodule init``
 
 ``git submodule update``
 
-2. Go to the **application** directory and clone your Symfony application.
-You can have as many applications as you want here. The Vagrantfile will define which one will run when vagrant goes up.
+*Step 2: Add the Symfony app(s)*
+
+``./vagrantee.sh -a https://github.com/myVendor/myApplication.git``
+
+Or do it manually:
 
 ``cd application/``
 
 ``git clone https://github.com/myVendor/myApplication.git``
 
-3. Edit the Vagrantfile and point the **synced folder** to your application folder. The *config.vm.synced_folder* shall look like this:
+*Step 3: Run the application*
+
+``./vagrantee.sh -r myApplication``
+
+Or do it manually by editing the Vagrantfile. The *config.vm.synced_folder* must point to your app folder, like this:
 
 ``config.vm.synced_folder "./application/myApplication/", "/vagrant", id: "vagrant-root", :nfs => true``
 
 4. Run ``vagrant up``
 
-5. After provisioning, your app shall be running at http://192.168.33.101
-
-##Performance
-This sandbox by default runs a patch to the AppKernel class, adding 2 methods that will change the CACHE and LOG folders
-**only for *dev* and *test* environments**. This makes an impressive difference on the application performance as described on this
-excelent post from <a href="https://twitter.com/beberlei">@beberlei</a>: <a href="http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html">http://www.whitewashing.de/2013/08/19/speedup_symfony2_on_vagrant_boxes.html</a>
+After provisioning, your app shall be running at http://192.168.33.101 .
+PhpMyAdmin will be running at http://192.168.33.101:8000 .
 
 ##Customizing Puppet
 To customize your sandbox, you can edit the custom module or modify the default manifest.
