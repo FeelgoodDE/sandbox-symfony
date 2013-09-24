@@ -1,5 +1,8 @@
 # File Managed by Puppet
 
+<% if @port != '80' -%>
+Listen <%= @port %>
+<% end -%>
 <VirtualHost *:<%= @port %>>
     ServerAdmin <%= @server_admin_email ||= 'webmaster@localhost' %>
     DocumentRoot <%= @real_docroot %>
